@@ -925,11 +925,11 @@ nnoremap <silent> <leader>o :call utils#uniteFileRec()<CR>
 " Browse [f]iles in CWD
 nnoremap <silent> <leader>f :call utils#uniteFileBrowse()<CR>
 " Quick match buffer
-nnoremap <silent> <leader>bb :Unite -quick-match buffer<cr>
+" nnoremap <silent> <leader>bb :Unite -quick-match buffer<cr>
 " [U]nite sources
 nnoremap <silent> <leader>u :call utils#uniteSources()<CR>
 " Search between open files - [b]uffers
-" nnoremap <silent> <leader>b :call utils#uniteBuffers()<CR>
+nnoremap <silent> <leader>b :call utils#uniteBuffers()<CR>
 " Search in current file ou[t]line (tags in current file)
 nnoremap <silent> <leader>t :call utils#uniteTags()<CR>
 " Search in [l]ines on current buffer

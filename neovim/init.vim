@@ -506,6 +506,7 @@ nnoremap ]t :tn<CR>
 nnoremap [t :tp<CR>
 nnoremap ,ts :ts<CR>
 nnoremap ,tg :GTags<CR>
+nnoremap <leader>] <C-]>
 
 " QuickFix navigation
 nnoremap ]q :cnext<CR>
@@ -780,6 +781,20 @@ let g:jsx_ext_required=0
 " -----------------------------------------------------
 let g:lightline = {
       \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename' ] ],
+      \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'filetype', 'fileencoding', 'fileformat' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"HELP":&readonly?"RO":""}'
+      \ },
+      \ 'component_function': {
+      \   'mode': 'utils#lightLineMode',
+      \   'filename': 'utils#lightLineFilename',
+      \   'filetype': 'utils#lightLineFiletype',
+      \   'fileformat': 'utils#lightLineFileformat',
+      \   'fileencoding': 'utils#lightLineFileencoding'
+      \ },
       \ }
 "}}}
 
@@ -1028,6 +1043,7 @@ inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
 " -----------------------------------------------------
 nnoremap <leader>gg :CtrlSF<Space>
 nnoremap <leader>gG :CtrlSFToggle<Space>
+" nnoremap <leader>ff <Plug>CtrlSFCwordPath
 "}}}
 
 " -----------------------------------------------------

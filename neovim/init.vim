@@ -372,16 +372,16 @@ let g:mapleader="\<space>"
 " 3.2 Disabling arrow keys, space key, exmode enter {{{
 " with Q key, help with F1, etc.
 " -----------------------------------------------------
-nnoremap <up> <NOP>
-nnoremap <down> <NOP>
-nnoremap <left> <NOP>
-nnoremap <right> <NOP>
+" nnoremap <up> <NOP>
+" nnoremap <down> <NOP>
+" nnoremap <left> <NOP>
+" nnoremap <right> <NOP>
 nnoremap <bs> <NOP>
 nnoremap <delete> <NOP>
-inoremap <up> <NOP>
-inoremap <down> <NOP>
-inoremap <left> <NOP>
-inoremap <right> <NOP>
+" inoremap <up> <NOP>
+" inoremap <down> <NOP>
+" inoremap <left> <NOP>
+" inoremap <right> <NOP>
 nnoremap <Space> <NOP>
 inoremap <F1> <NOP>
 nnoremap <F1> <NOP>
@@ -779,30 +779,7 @@ let g:jsx_ext_required=0
 " 4.7 Lightline settings {{{
 " -----------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ 'tab': {
-      \   'active': [ 'filename' ],
-      \   'inactive': [ 'filename' ]
-      \ },
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename' ] ],
-      \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'filetype', 'fileencoding', 'fileformat' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"HELP":&readonly?"RO":""}'
-      \ },
-      \ 'component_function': {
-      \   'mode': 'utils#lightLineMode',
-      \   'filename': 'utils#lightLineFilename',
-      \   'filetype': 'utils#lightLineFiletype',
-      \   'fileformat': 'utils#lightLineFileformat',
-      \   'fileencoding': 'utils#lightLineFileencoding'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&readonly)'
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
+      \ 'colorscheme': 'solarized',
       \ }
 "}}}
 
@@ -947,10 +924,12 @@ endfunction
 nnoremap <silent> <leader>o :call utils#uniteFileRec()<CR>
 " Browse [f]iles in CWD
 nnoremap <silent> <leader>f :call utils#uniteFileBrowse()<CR>
+" Quick match buffer
+nnoremap <silent> <leader>bb :Unite -quick-match buffer<cr>
 " [U]nite sources
 nnoremap <silent> <leader>u :call utils#uniteSources()<CR>
 " Search between open files - [b]uffers
-nnoremap <silent> <leader>b :call utils#uniteBuffers()<CR>
+" nnoremap <silent> <leader>b :call utils#uniteBuffers()<CR>
 " Search in current file ou[t]line (tags in current file)
 nnoremap <silent> <leader>t :call utils#uniteTags()<CR>
 " Search in [l]ines on current buffer
@@ -996,37 +975,38 @@ nnoremap ,u :UnIsolate<CR>
 " -----------------------------------------------------
 nnoremap [h :GitGutterPrevHunk<CR>
 nnoremap ]h :GitGutterNextHunk<CR>
-nnoremap ,hs :GitGutterStageHunk<CR>
-nnoremap ,hr :GitGutterRevertHunk<CR>
+nnoremap <Leader>hs :GitGutterStageHunk<CR>
+nnoremap <Leader>hr :GitGutterUndoHunk<CR>
+nmap <Leader>hp <Plug>GitGutterPreviewHunk
 "}}}
 
 " -----------------------------------------------------
 " 5.5 Expand region {{{
 " -----------------------------------------------------
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
+" vmap v <Plug>(expand_region_expand)
+" vmap <C-v> <Plug>(expand_region_shrink)
 "}}}
 
 " -----------------------------------------------------
 " 5.6 Vim Markdown {{{
 " -----------------------------------------------------
-nmap [[ <Plug>Markdown_MoveToPreviousHeader
-nmap ]] <Plug>Markdown_MoveToNextHeader
+" nmap [[ <Plug>Markdown_MoveToPreviousHeader
+" nmap ]] <Plug>Markdown_MoveToNextHeader
 "}}}
 
 " -----------------------------------------------------
 " 5.7 Argumentative (use a instead of ,) {{{
 " -----------------------------------------------------
-xmap ia <Plug>Argumentative_InnerTextObject
-xmap aa <Plug>Argumentative_OuterTextObject
-omap ia <Plug>Argumentative_OpPendingInnerTextObject
-omap aa <Plug>Argumentative_OpPendingOuterTextObject
-nmap [a <Plug>Argumentative_Prev
-nmap ]a <Plug>Argumentative_Next
-xmap [a <Plug>Argumentative_XPrev
-xmap ]a <Plug>Argumentative_XNext
-nmap <a <Plug>Argumentative_MoveLeft
-nmap >a <Plug>Argumentative_MoveRight
+" xmap ia <Plug>Argumentative_InnerTextObject
+" xmap aa <Plug>Argumentative_OuterTextObject
+" omap ia <Plug>Argumentative_OpPendingInnerTextObject
+" omap aa <Plug>Argumentative_OpPendingOuterTextObject
+" nmap [a <Plug>Argumentative_Prev
+" nmap ]a <Plug>Argumentative_Next
+" xmap [a <Plug>Argumentative_XPrev
+" xmap ]a <Plug>Argumentative_XNext
+" nmap <a <Plug>Argumentative_MoveLeft
+" nmap >a <Plug>Argumentative_MoveRight
 "}}}
 
 " -----------------------------------------------------
@@ -1083,7 +1063,7 @@ nnoremap <silent> ,g :call utils#searchCurrentWordWithAg()<CR>
 " -----------------------------------------------------
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit --verbose<CR>
-nnoremap <leader>gc :Gcommit --verbose<CR>
+" nnoremap <leader>gc :Gcommit --verbose<CR>
 nnoremap <leader>gd :Gvdiff<CR>
 "}}}
 
@@ -1110,12 +1090,12 @@ syntax on
 "}}}
 
 " Color scheme based on time {{{
-if strftime("%H") < 15
-  colorscheme badwolf
-else
-  let g:rehash256=1
-  colorscheme molokai
-endif
+" if strftime("%H") < 15
+"   colorscheme badwolf
+" else
+"   let g:rehash256=1
+"   colorscheme molokai
+" endif
 "}}}
 
 " Highlight VCS conflict markers {{{
@@ -1176,10 +1156,10 @@ augroup END
 "}}}
 
 " Keyboard layout switching {{{
-if g:utils_autoswitch_kb_layout == 1
-  autocmd InsertEnter * call utils#setSKKBLayout()
-  autocmd InsertLeave * call utils#setUSKBLayout()
-end
+" if g:utils_autoswitch_kb_layout == 1
+"   autocmd InsertEnter * call utils#setSKKBLayout()
+"   autocmd InsertLeave * call utils#setUSKBLayout()
+" end
 "}}}
 
 " -----------------------------------------------------

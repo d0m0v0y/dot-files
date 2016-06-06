@@ -161,7 +161,7 @@ function! g:utils#uniteFileBrowse() abort
 endfunction
 
 function! g:utils#uniteFileRec() abort
-  execute 'Unite -no-split -buffer-name=file-recursive-search -start-insert file_rec/neovim'
+  execute 'Unite -no-split -buffer-name=file-recursive-search -start-insert file_rec/async'
 endfunction
 
 function! g:utils#uniteBuffers() abort

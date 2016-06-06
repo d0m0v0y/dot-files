@@ -589,8 +589,8 @@ nnoremap <silent> <C-Down> :resize -1<CR>
 " Buffers navigation and management
 nnoremap <silent> + :bn<CR>
 nnoremap <silent> _ :bp<CR>
-nnoremap <silent> > :bn<CR>
-nnoremap <silent> < :bp<CR>
+" nnoremap <silent> > :bn<CR>
+" nnoremap <silent> < :bp<CR>
 "}}}
 
 " -----------------------------------------------------
@@ -1001,8 +1001,8 @@ nmap <Leader>hp <Plug>GitGutterPreviewHunk
 " -----------------------------------------------------
 " 5.5 Expand region {{{
 " -----------------------------------------------------
-" vmap v <Plug>(expand_region_expand)
-" vmap <C-v> <Plug>(expand_region_shrink)
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 "}}}
 
 " -----------------------------------------------------

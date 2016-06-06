@@ -588,6 +588,8 @@ nnoremap <silent> <C-Down> :resize -1<CR>
 " Buffers navigation and management
 nnoremap <silent> + :bn<CR>
 nnoremap <silent> _ :bp<CR>
+nnoremap <silent> > :bn<CR>
+nnoremap <silent> < :bp<CR>
 "}}}
 
 " -----------------------------------------------------

@@ -161,7 +161,7 @@ function! g:utils#uniteFileBrowse() abort
 endfunction
 
 function! g:utils#uniteFileRec() abort
-  execute 'Unite -no-split -buffer-name=file-recursive-search -start-insert file_rec/async'
+  execute 'Unite -no-split -buffer-name=file-recursive-search -start-insert file_rec/neovim'
 endfunction
 
 function! g:utils#uniteBuffers() abort
@@ -283,7 +283,7 @@ endfunction
 
 " File name function for Lightline statusline
 function! g:utils#lightLineFilename() abort
-  let l:fname = expand('%:t')
+  let l:fname = expand('%')
   return l:fname =~? 'NERD_tree' ? 'NERDTree' :
         \ &filetype ==? 'unite' ? g:unite#get_status_string() :
         \ ('' !=# l:fname ? l:fname : '[No Name]')

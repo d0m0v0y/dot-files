@@ -198,7 +198,8 @@ Plug 'wellle/targets.vim'
 " ---------------------------------------------------------------------------------------------------------------------
 " Colorschemes {{{
 " ---------------------------------------------------------------------------------------------------------------------
-
+" Solarized
+Plug 'altercation/vim-colors-solarized'
 " Hybrid
 Plug 'w0ng/vim-hybrid'
 " Jellybeans
@@ -207,6 +208,8 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'sjl/badwolf'
 " Molokai
 Plug 'tomasr/molokai'
+" Gruvbox
+Plug 'morhetz/gruvbox'
 "}}}
 
 " ---------------------------------------------------------------------------------------------------------------------
@@ -345,7 +348,7 @@ set wildignore+=tmp/**
 " 2.10 Neovim specific settings {{{
 " ---------------------------------------------------------------------------------------------------------------------
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1       " Set an environment variable to use the t_SI/t_EI hack
-" let $NVIM_TUI_ENABLE_TRUE_COLOR=1       " Turn on true colors support (does not work inside tmux yet)
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1       " Turn on true colors support (does not work inside tmux yet)
 "}}}
 
 " -----------------------------------------------------
@@ -431,6 +434,10 @@ nnoremap H ^
 nnoremap L $
 vnoremap H ^
 vnoremap L g_
+
+" Remap J and K (pageUp and pageDown)
+nnoremap J <C-f>zz
+nnoremap K <C-b>zz
 
 " More logical Y (default was alias for yy)
 nnoremap Y y$
@@ -525,7 +532,7 @@ nnoremap [e :lprevious<CR>
 nnoremap gp `[v`]
 
 " Keep the cursor in place while joining lines
-nnoremap J mzJ`z
+" nnoremap J mzJ`z
 
 " [S]plit line (sister to [J]oin lines) S is covered by cc.
 nnoremap S mzi<CR><ESC>`z
@@ -783,7 +790,7 @@ let g:jsx_ext_required=0
 " 4.7 Lightline settings {{{
 " -----------------------------------------------------
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'filename' ] ],
       \   'right': [ [ 'lineinfo' ], [ 'percent' ], [ 'filetype', 'fileencoding', 'fileformat' ] ]
@@ -1044,8 +1051,8 @@ inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
 " -----------------------------------------------------
 " 5.9 CtrlSF {{{
 " -----------------------------------------------------
-nnoremap <leader>gg :CtrlSF<Space>
-nnoremap <leader>gG :CtrlSFToggle<Space>
+nnoremap <leader>ff :CtrlSF<Space>
+nnoremap <leader>ft :CtrlSFToggle<CR>
 " nnoremap <leader>ff <Plug>CtrlSFCwordPath
 "}}}
 
@@ -1105,8 +1112,15 @@ nnoremap <leader>gh :Gitv!<CR>
 " ======================================================================================================================
 "{{{
 " Syntax highlighting {{{
-syntax on
+syntax enable
 "}}}
+
+" Colorschemes
+set background=dark
+" set background=light
+" colorscheme solarized
+colorscheme gruvbox
+
 
 " Color scheme based on time {{{
 " if strftime("%H") < 15
